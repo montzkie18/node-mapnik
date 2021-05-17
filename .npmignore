@@ -26,7 +26,12 @@ documentation
 package
 __nvm
 mason
-mason_packages
+mason_packages/*
+mason_packages/.binaries/*
+mason_packages/.binaries/linux-x86_64/*
+mason_packages/.binaries/osx-x86_64/*
+!mason_packages/.binaries/linux-x86_64/mapnik/bdfa1e882.tar.gz
+!mason_packages/.binaries/osx-x86_64/mapnik/bdfa1e882.tar.gz
 deps/wagyu/tests
 deps/wagyu/docs
 deps/geometry/tests
