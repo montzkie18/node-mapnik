@@ -46,7 +46,7 @@ function publish() {
 
           CONTENT_TYPE="application/octet-stream"
           BINARY_VERSION=$(node -e "console.log(require('./package.json').version)")
-          BINARIES_PATH=$(pwd)/build/stage/@montzkie18/mapnik/$BINARY_VERSION/Release
+          BINARIES_PATH=$(pwd)/build/stage/@montzkie18/mapnik/v$BINARY_VERSION/Release
           for BINARY_FILE in $BINARIES_PATH/*.tar.gz; do
               ASSET_NAME=$(basename $BINARY_FILE)
               curl \
