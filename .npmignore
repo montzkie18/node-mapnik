@@ -10,7 +10,6 @@ build
 test
 benchmark
 configure
-Makefile
 .travis.yml
 appveyor.yml
 examples
