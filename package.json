@@ -4,7 +4,7 @@
   "url": "http://github.com/mapnik/node-mapnik",
   "homepage": "http://mapnik.org",
   "author": "Dane Springmeyer <dane@mapbox.com> (mapnik.org)",
-  "version": "4.5.9-alpha-04",
+  "version": "4.5.9-alpha-05",
   "mapnik_version": "bdfa1e882",
   "main": "./lib/mapnik.js",
   "binary": {
@@ -48,7 +48,7 @@
   },
   "scripts": {
     "test": "tape test/*.test.js",
-    "install": "PATH=./mason_packages/.link:$PATH node-pre-gyp install --fallback-to-build",
+    "install": "make release && node-pre-gyp install --fallback-to-build",
     "docs": "documentation build src/*.cpp src/mapnik_plugins.hpp --polyglot -o documentation -f html --github --name Mapnik"
   },
   "devDependencies": {
