@@ -42,7 +42,20 @@ function publish() {
 
       if [[ ${COMMIT_MESSAGE} =~ "[publish binary]" ]]; then
           echo "Publishing"
-          ./node_modules/.bin/node-pre-gyp package publish $@
+          ./node_modules/.bin/node-pre-gyp package $@
+
+          CONTENT_TYPE="application/octet-stream"
+          BINARY_VERSION=$(node -e "console.log(require('./package.json').version)")
+          BINARIES_PATH=$(pwd)/build/stage/@montzkie18/mapnik/$BINARY_VERSION/Release
+          for BINARY_FILE in $BINARIES_PATH/*.tar.gz; do
+              ASSET_NAME=$(basename $BINARY_FILE)
+              curl \
+                -H "Authorization: token $GITHUB_TOKEN" \
+                -H "Content-Type: $CONTENT_TYPE" \
+                --data-binary @$BINARY_FILE \
+                "https://uploads.github.com/repos/montzkie18/node-mapnik/releases/43126510/assets?name=$ASSET_NAME"
+          done
+
       elif [[ ${COMMIT_MESSAGE} =~ "[republish binary]" ]]; then
           echo "Re-Publishing"
           ./node_modules/.bin/node-pre-gyp package unpublish publish $@
