@@ -33,8 +33,15 @@ matrix:
   include:
     # linux publishable Release
     - os: linux
-      env: BUILDTYPE=release
+      env: BUILDTYPE=release CXX="g++-6" CC="gcc-6"
       node_js: 12
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - libstdc++-6-dev
+            - g++-6
     # osx publishable Release
     - os: osx
       osx_image: xcode11
